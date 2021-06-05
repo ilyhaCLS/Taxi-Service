@@ -130,36 +130,6 @@ public class JDBCUserDao implements UserDao{
 	}
 
 	@Override
-	public void create(User entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public User findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update(User entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void close() {
 		try {
             connection.close();

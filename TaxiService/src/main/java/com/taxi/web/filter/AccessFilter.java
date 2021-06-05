@@ -17,17 +17,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.taxi.web.Path;
 import com.taxi.web.model.entity.Role;
 
 public class AccessFilter implements Filter {
+	private static final Logger log = LoggerFactory.getLogger(AccessFilter.class);
+	
 
 	private static Map<Role, List<String>> accessMap = new HashMap<Role, List<String>>();
 	private static List<String> commons = new ArrayList<String>();
 	private static List<String> outOfControl = new ArrayList<String>();
 
 	public void init(FilterConfig fConfig) throws ServletException {
-
 		// roles
 		accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("ADMIN")));
 		accessMap.put(Role.CLIENT, asList(fConfig.getInitParameter("CLIENT")));
@@ -37,6 +41,8 @@ public class AccessFilter implements Filter {
 
 		// out of control
 		outOfControl = asList(fConfig.getInitParameter("out-of-control"));
+		
+		log.info("AccessFilter initialized!");
 	}
 
 	@Override
@@ -44,8 +50,10 @@ public class AccessFilter implements Filter {
 			throws IOException, ServletException {
 		
 		if (accessAllowed(req)) {
+			log.info("Access allowed");
 			chain.doFilter(req, res);
 		} else {
+			log.info("Access denied");
 			String errorMessage = "no_access";
 
 			((HttpServletResponse)res).setHeader("message_info", errorMessage);
@@ -54,6 +62,7 @@ public class AccessFilter implements Filter {
 	}
 
 	private boolean accessAllowed(ServletRequest req) {
+		log.info("request parameter command -->" + req.getParameter("command"));
 				
 		HttpSession session = ((HttpServletRequest)req).getSession(false);
 		

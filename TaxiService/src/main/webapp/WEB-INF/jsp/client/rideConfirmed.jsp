@@ -17,19 +17,16 @@
 		<h2 style="color: green;"><fmt:message key="rideDetails.confirmed"/></h2>
 		<br>
 		<h2 style="color: green;">
-		<%
 		
-		for(Car c : (ArrayList<Car>)request.getAttribute("cars")){
-			out.print(c.getLicPlate()+" "+c.getName()+" <br/>");
-		}
-
+		<c:forEach items="${cars}" var="c">
+			<c:out value = "${c.getLicPlate()}"/> <c:out value = "${c.getName()}"/><br/>
+		</c:forEach>
 		
-		%>
 	 	<fmt:message key="rideConfirmed.wish"/>
 		</h2>
 		<br>
 		<h2>
-			<a href="/controller?command=account"><fmt:message key="rideConfirmed.history"/></a>
+			<a href="/controller?command=account&p=1"><fmt:message key="rideConfirmed.history"/></a>
 			<br/>
 			<a href="/"><fmt:message key="page.back_to_main"/></a>
 		</h2>

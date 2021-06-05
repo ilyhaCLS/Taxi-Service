@@ -10,7 +10,8 @@ public class CarService {
 	
 	public Car getActiveCar(String carClass){
 		try(CarDao dao = daoFactory.createCarDao()){
-			return dao.findActiveCarByClass(carClass);
+			Car c = dao.findActiveCarByClass(carClass);
+			return c;
 		}
 	}
 }

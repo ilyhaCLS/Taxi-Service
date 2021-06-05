@@ -22,36 +22,6 @@ public class JDBCCarDao implements CarDao {
     
 
 	@Override
-	public void create(Car entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Car findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Car> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update(Car entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void close() {
 		try {
             connection.close();

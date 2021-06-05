@@ -15,9 +15,9 @@
 	<br>
 	<br>
 
-	<h3> | <fmt:message key="account.first"/><%out.print(request.getAttribute("first"));%></h3>
-	<h3> | <fmt:message key="account.last"/><%out.print(request.getAttribute("last"));%></h3>
-	<h3> | <fmt:message key="account.totalSpent"/><%out.print(request.getAttribute("totalSpent"));%></h3>
+	<h3> | <fmt:message key="account.first"/><c:out value = "${first}"/></h3>
+	<h3> | <fmt:message key="account.last"/><c:out value = "${last}"/></h3>
+	<h3> | <fmt:message key="account.totalSpent"/><c:out value = "${totalSpent}"/></h3>
 	
 	<h1><fmt:message key="account.rides_info"/></h1>
 
@@ -32,30 +32,7 @@
 				<th scope="col"><fmt:message key="account.rides.car"/></th>
 			</tr>
 		</thead>
-		<tbody>
-
-			<%--
-			
-			ArrayList<Ride> rides = (ArrayList<Ride>) request.getAttribute("rides");
-			
-			String langTag = Arrays.stream(request.getCookies())
-					.filter((Cookie c)->c.getName().equals("lang")).findFirst().get().getValue();
-			
-			LocalDateTime dt = null;
-		    DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
-		            .withLocale(Locale.forLanguageTag(langTag));
-
-			for (Ride ride : rides) {
-				dt = LocalDateTime.parse(ride.getCreationTime().toString());
-				out.println("<tr><th scope=\"row\">"+ride.getId()+"</th>");
-				out.println("<td>"+ride.getPosFrom() +"</td>");
-				out.println("<td>"+ride.getPosTo() +"</td>");
-				out.println("<td>"+langTag == null ? ride.getPrice() : ride.getPrice() / 27 +"</td>");
-				out.println("<td>"+dt.format(formatter) +"</td>");
-				out.println("<td>"+ride.getCar().getLicPlate()+" "+ride.getCar().getName()+" "+ride.getCar().getCarClass() +"</td></tr>");
-			}
-			--%>
-			
+		<tbody>		
 		<c:set var = "langTag" scope = "session" value = "${cookie.lang.value}"/>
 		<c:forEach items="${rides}" var="ride">
 			<tr>
@@ -82,5 +59,10 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	
+	<c:forEach begin="1" end="${numOfPages}" varStatus="loop">
+    	<a href="/controller?command=account&p=${loop.index}" class="btn btn-primary"> <c:out value = "${loop.index}"/> </a>
+	</c:forEach>
+
 </body>
 </html>

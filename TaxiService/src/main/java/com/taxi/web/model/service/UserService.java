@@ -35,12 +35,12 @@ public class UserService {
 		}
 	}
 	
-	public void addUser(User us, UserInfo usInfo) {
+	public void addUser(User us, UserInfo usInfo)throws SQLException {
 		try(UserDao dao = daoFactory.createUserDao()){
 			try {
 				dao.regNewUser(us, usInfo);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw e;
 			}
 		}
 	}

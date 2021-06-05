@@ -11,7 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.taxi.web.command.Command;
 import com.taxi.web.command.CommandContainer;
 
-
+/**
+ * Main Controller class which processes every request
+ * to non-general web-site pages by {@code process} method.
+ * 
+ *
+ */
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 2423353715955164816L;
@@ -28,7 +33,14 @@ public class Controller extends HttpServlet {
 		process(request, response);
 	}
 
-	
+	/**
+	 * Processes {@code request}
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	private void process(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 

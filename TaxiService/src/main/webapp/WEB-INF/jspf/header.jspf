@@ -1,6 +1,6 @@
 <%@include file="/WEB-INF/jspf/directive/page.jspf"%>
 <%@include file="/WEB-INF/jspf/directive/taglib.jspf"%>
-
+<%@taglib uri="customtag" prefix="ct"%>
 
 <c:choose>
 	<c:when test="${cookie.lang.value != 'en'}">
@@ -9,8 +9,11 @@
 	<c:when test="${cookie.lang.value != 'ru'}">
 		<a href="/controller?command=lang&newLang=ru"> RU </a>
 	</c:when>
-
 </c:choose>
+<ct:currentTime value="${cookie.lang.value}"/>
+
+
+
 
 <header id="header" class="header">
 	<div class="container">
@@ -44,7 +47,7 @@
 							</li>
 						<li class="menu__item"><c:if
 								test="${not empty sessionScope.user_id}">
-								<a href="controller?command=account"> <fmt:message
+								<a href="controller?command=account&p=1"> <fmt:message
 										key="header.account" />
 								</a>
 								|

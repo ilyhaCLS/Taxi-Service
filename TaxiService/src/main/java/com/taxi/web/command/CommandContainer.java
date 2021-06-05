@@ -1,17 +1,20 @@
 package com.taxi.web.command;
 
-
-
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
+/**
+ * Container class which contains all available commands for this web site.
+ *
+ */
 public class CommandContainer {
 	
-	//private static final Logger log = Logger.getLogger(CommandContainer.class);
+	private static final Logger log = LoggerFactory.getLogger(CommandContainer.class);
 	
-	private static Map<String, Command> commands = new TreeMap<String, Command>();//TREE??
+	private static Map<String, Command> commands = new HashMap<String, Command>();
 	
 	static {
 		// common commands
@@ -21,29 +24,26 @@ public class CommandContainer {
 		commands.put("register", new RegisterCommand());
 		commands.put("lang", new LangCommand());
 		
-		//	commands.put("noCommand", new NoCommand());
 		// client commands
 		commands.put("account", new AccountCommand());
 		commands.put("ride", new RideCommand());
 		commands.put("rideDetails", new RideDetailsCommand());
-		commands.put("rideConfirmed", new RideConfirmedCommand());
+		commands.put("rideConfirm", new RideConfirmCommand());
+		
+		// admin commands
 		commands.put("adminPage", new AdminPageCommand());
 		commands.put("showRides", new ShowRidesCommand());
 		
-		// admin commands
-		//commands.put("listOrders", new ListOrdersCommand());
-		
-		//log.debug("Command container was successfully initialized");
-		//log.trace("Number of commands --> " + commands.size());
+		log.info("Command container was successfully initialized");
+		log.info("Number of commands --> " + commands.size());
 	}
 
+	/**
+	 * @param commandName
+	 * @return Command based on {@code commandName}
+	 */
 	public static Command get(String commandName) {
-		if (commandName == null || !commands.containsKey(commandName)) {
-			//log.trace("Command not found, name --> " + commandName);
-			return commands.get("noCommand");
-		}
-		
+		log.info("command: " +commands.get(commandName));
 		return commands.get(commandName);
 	}
-	
 }

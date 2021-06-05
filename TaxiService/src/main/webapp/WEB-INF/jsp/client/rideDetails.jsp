@@ -42,7 +42,7 @@
 				<fmt:message key="rideDetails.disc"/>: <c:out value="${disc }"/><br/>
 				
 					<form action="/controller" method="post">
-						<input type="hidden" name="command" value="rideConfirmed"/>
+						<input type="hidden" name="command" value="rideConfirm"/>
 						<input type="hidden" name="opt" value="0"/>
 						<button type="submit" value="Войти">Подтвердить заказ</button>
 					</form>
@@ -57,7 +57,7 @@
 				<fmt:message key="rideDetails.disc"/>: <c:out value="${sessionScope.disc }"/><br/>
 				
 				<fmt:message key="rideDetails.comp1"/>
-				<fmt:message key="rideDetails.comp2"/> <a href="/controller?command=rideConfirmed&opt=1"><fmt:message key="rideDetails.comp3"/><c:out value="${sessionScope.option1.numOfCars }"/> <fmt:message key="rideDetails.comp4"/><c:out value="${sessionScope.option1.carClass }"/> 
+				<fmt:message key="rideDetails.comp2"/> <a href="/controller?command=rideConfirm&opt=1"><fmt:message key="rideDetails.comp3"/><c:out value="${sessionScope.option1.numOfCars }"/> <fmt:message key="rideDetails.comp4"/><c:out value="${sessionScope.option1.carClass }"/> 
 				<fmt:message key="rideDetails.comp5"/>
 				
 				<c:if test="${cookie.lang.value == 'ru'}">
@@ -70,7 +70,7 @@
 				</c:if>
 				<fmt:message key="rideDetails.comp6"/></a>
 				
-				<fmt:message key="header.or"/> <a href="/controller?command=rideConfirmed&opt=2">
+				<fmt:message key="header.or"/> <a href="/controller?command=rideConfirm&opt=2">
 				<fmt:message key="rideDetails.comp3"/><c:out value="${sessionScope.option2.numOfCars }"/> 
 				<fmt:message key="rideDetails.comp4"/><c:out value="${sessionScope.option2.carClass }"/> 
 				<fmt:message key="rideDetails.comp5"/>

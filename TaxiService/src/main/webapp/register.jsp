@@ -23,9 +23,9 @@
 	<div class="text-center">
 	<c:if test="${!empty pageContext.response.getHeader('message_info')}">
 		
-			<h4>
+			<h5>
 				<fmt:message key="${pageContext.response.getHeader('message_info')}" />
-			</h4>
+			</h5>
 		
 	</c:if>
 	

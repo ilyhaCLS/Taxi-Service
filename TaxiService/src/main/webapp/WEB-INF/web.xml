@@ -12,6 +12,13 @@
         <el-ignored>false</el-ignored>
         <scripting-invalid>false</scripting-invalid>
     </jsp-property-group>
+    
+    
+    
+  	<taglib>
+  		<taglib-uri>customtag</taglib-uri>
+  		<taglib-location>/WEB-INF/currentTimeTag.tld</taglib-location>
+ 	</taglib>
   </jsp-config>
 
  <context-param>
@@ -40,8 +47,13 @@
 	
 	
 	<filter>
-		<filter-name>GeneralPagesAccess</filter-name>
-		<filter-class>com.taxi.web.filter.GeneralPagesAccess</filter-class>
+		<filter-name>LogRegPagesAccess</filter-name>
+		<filter-class>com.taxi.web.filter.LogRegPagesAccess</filter-class>
+	</filter>
+	
+	<filter>
+		<filter-name>IndexPageAccess</filter-name>
+		<filter-class>com.taxi.web.filter.IndexPageAccess</filter-class>
 	</filter>
 
 	<filter>
@@ -53,7 +65,7 @@
 		</init-param>
 		<init-param>
 			<param-name>CLIENT</param-name>
-			<param-value>account ride rideConfirmed rideDetails</param-value>
+			<param-value>account ride rideConfirm rideDetails</param-value>
 		</init-param>
 		<init-param>
 			<param-name>common</param-name>
@@ -74,17 +86,17 @@
 	</filter-mapping>
 
 	<filter-mapping>
-		<filter-name>GeneralPagesAccess</filter-name>
+		<filter-name>LogRegPagesAccess</filter-name>
 		<url-pattern>/login.jsp</url-pattern>
 	</filter-mapping>
 
 	<filter-mapping>
-		<filter-name>GeneralPagesAccess</filter-name>
+		<filter-name>LogRegPagesAccess</filter-name>
 		<url-pattern>/register.jsp</url-pattern>
 	</filter-mapping>
 	
 	<filter-mapping>
-		<filter-name>GeneralPagesAccess</filter-name>
+		<filter-name>IndexPageAccess</filter-name>
 		<url-pattern>/index.jsp</url-pattern>
 	</filter-mapping>
 
