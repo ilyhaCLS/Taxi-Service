@@ -23,7 +23,7 @@ public class RideDetailsService {
 
 		HttpSession session = req.getSession();
 
-		GeoApiContext sc = new GeoApiContext.Builder().apiKey("AIzaSyB9nfRnIbVxpTifteh8wiI6-8OvHb7o72k").build();
+		GeoApiContext sc = new GeoApiContext.Builder().apiKey("securekey").build();
 		DistanceMatrix matrix = null;
 		try {
 			matrix = DistanceMatrixApi.newRequest(sc).origins(req.getParameter("posFrom").replace(' ', '+'))
